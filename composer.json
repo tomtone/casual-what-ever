@@ -17,6 +17,7 @@
         "zendframework/zend-version":        "2.*",
         "zf-commons/zfc-user":               "dev-master",
         "bjyoungblood/bjy-authorize":        "1.2.*",
-        "bjyoungblood/bjy-profiler":         "dev-master"
+        "bjyoungblood/bjy-profiler":         "dev-master",
+        "zendframework/zend-developer-tools": "dev-master"
     }
 }
