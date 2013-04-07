@@ -8,6 +8,7 @@ return array(
         'BjyProfiler',
         'ZfcUser',
         'ZfcBase',
+        'Account',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
