@@ -9,6 +9,7 @@ namespace Unit\Model;
 
 /**
  * Class MovableUnitTrait
+ * represents each movable unit like soldiers
  * @package Unit\Model
  */
 trait MovableUnitTrait {
