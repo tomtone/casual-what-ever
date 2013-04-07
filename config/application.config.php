@@ -9,7 +9,8 @@ return array(
         'ZfcUser',
         'ZfcBase',
         'Account',
-        'Unit'
+        'Unit',
+        'Map'
     ),
 
     // These are various options for the listeners attached to the ModuleManager
