@@ -17,6 +17,6 @@
         "zendframework/zend-version":        "2.*",
         "zf-commons/zfc-user":               "dev-master",
         "bjyoungblood/bjy-authorize":        "1.2.*",
-        "bjyoungblood/bjy-profiler":         "Version: dev-master, allows the usage of the (Zend) Db collector."
+        "bjyoungblood/bjy-profiler":         "dev-master"
     }
 }
