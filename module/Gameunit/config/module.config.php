@@ -10,7 +10,7 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'gameunit' => 'Gameunit\Controller\UnitController',
+            'gameunit\unit' => 'Gameunit\Controller\UnitController',
         ),
     ),
     'router' => array(
@@ -23,7 +23,7 @@ return array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'gameunit',
+                        'controller' => 'gameunit\unit',
                         'action'     => 'index',
                     ),
                 ),
