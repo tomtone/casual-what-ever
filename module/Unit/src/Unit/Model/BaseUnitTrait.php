@@ -49,6 +49,12 @@ trait BaseUnitTrait
     public $costUpgradeFactor = 2;
 
     /**
+     * List of abilities
+     * @var array
+     */
+    public $abilities = null;
+
+    /**
      * @param int $upgrade Amount upgrade value
      * @param bool $nextLevel When true points of next level will be calculated
      * @return float calculated value
@@ -197,6 +203,23 @@ trait BaseUnitTrait
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getAbilities()
+    {
+        return $this->abilities;
+    }
+
+    /**
+     * @param $abilities
+     */
+    public function setAbilities($abilities)
+    {
+        $this->abilities = $abilities;
     }
 
 

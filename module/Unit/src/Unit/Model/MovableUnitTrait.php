@@ -12,6 +12,10 @@ namespace Unit\Model;
  * represents each movable unit like soldiers
  * @package Unit\Model
  */
+/**
+ * Class MovableUnitTrait
+ * @package Unit\Model
+ */
 trait MovableUnitTrait {
     /**
      * @var int
@@ -19,10 +23,9 @@ trait MovableUnitTrait {
     public $dexUpgradeFactor = 2;
 
     /**
-     * List of abilities
-     * @var array
+     * @var int
      */
-    public $abilities = null;
+    public $movementUpgradeFactor = 2;
 
     /**
      * @return int
@@ -41,18 +44,18 @@ trait MovableUnitTrait {
     }
 
     /**
-     * @return array
+     * @return int
      */
-    public function getAbilities()
+    public function getMovementUpgradeFactor()
     {
-        return $this->abilities;
+        return $this->movementUpgradeFactor;
     }
 
     /**
-     * @param $abilities
+     * @param $movementUpgradeFactor
      */
-    public function setAbilities($abilities)
+    public function setMovementUpgradeFactor($movementUpgradeFactor)
     {
-        $this->abilities = $abilities;
+        $this->movementUpgradeFactor = $movementUpgradeFactor;
     }
 }

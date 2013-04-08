@@ -8,5 +8,32 @@
  */
 
 return array(
+    'controllers' => array(
+        'invokables' => array(
+            'gameunit' => 'Unit\Controller\UnitController',
+        ),
+    ),
+    'router' => array(
+        'routes' => array(
+            'unit' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/unit[/:action]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'gameunit',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+        ),
+    ),
 
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'unit' => __DIR__ . '/../view',
+        ),
+    ),
 );
