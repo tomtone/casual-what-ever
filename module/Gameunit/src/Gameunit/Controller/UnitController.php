@@ -7,7 +7,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Unit\Controller;
+namespace Gameunit\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -16,7 +16,11 @@ class UnitController extends AbstractActionController
 {
     public function indexAction()
     {
-        var_dump('Units!');
+        return new ViewModel();
+    }
+
+    public function showAction()
+    {
         return new ViewModel();
     }
 }

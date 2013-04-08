@@ -4,7 +4,7 @@
  * @copyright 2012 Marco Bunge <efika@rubymatrix.de>
  */
 
-namespace Unit\Model;
+namespace Gameunit\Model;
 
 
 /**

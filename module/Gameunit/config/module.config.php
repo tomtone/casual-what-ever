@@ -10,7 +10,7 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'gameunit' => 'Unit\Controller\UnitController',
+            'gameunit' => 'Gameunit\Controller\UnitController',
         ),
     ),
     'router' => array(
