@@ -9,12 +9,8 @@ return array(
         'ZfcUser',
         'ZfcBase',
         'Account',
-<<<<<<< HEAD
-        'Gameunit'
-=======
-        'Unit',
-        'Map'
->>>>>>> 57c689ef1b4426f79f72877883941d781dda65cf
+        'Gameunit',
+        'Map',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
