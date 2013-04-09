@@ -21,6 +21,17 @@ $dbParams = array(
 );
 
 return array(
+//    'db' => array(
+//        'driver'    => 'pdo',
+//        'dsn'       => 'mysql:dbname='.$dbParams['database'].';host='.$dbParams['hostname'],
+//        'database'  => $dbParams['database'],
+//        'username'  => $dbParams['username'],
+//        'password'  => $dbParams['password'],
+//        'hostname'  => $dbParams['hostname'],
+//        'driver_options' => array(
+//            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+//        ),
+//    ),
     'service_manager' => array(
         'factories' => array(
             'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {

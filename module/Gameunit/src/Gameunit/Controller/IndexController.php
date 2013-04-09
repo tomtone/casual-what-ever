@@ -9,15 +9,39 @@
 
 namespace Gameunit\Controller;
 
+use Gameunit\Model\GameunitUnit;
+use Gameunit\Model\GameunitUnitTable;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\XmlRpc\Client\Exception\HttpException;
 
 class IndexController extends AbstractActionController
 {
+
+    protected $gameunitUnitTable;
+
+    public function __construct()
+    {
+        // TODO: Implement __construct() method.
+    }
+
+
     public function indexAction()
     {
 //        $child = new ViewModel();
 //        $child->setTemplate('gameunit/unit/index');
+
+//        $this->getGameunitUnitTable();
+
+        $this->getGameunitUnitTable();
+
+        $units = $this->getGameunitUnitTable()->fetchAll();
+
+        foreach($units as $unit){
+            var_dump($unit);
+        }
 
         $units = $this->forward()->dispatch('gameunit/unit',array('action' => 'index'));
         $buildings = $this->forward()->dispatch('gameunit/building',array('action' => 'index'));
@@ -33,5 +57,15 @@ class IndexController extends AbstractActionController
     public function showAction()
     {
         return new ViewModel();
+    }
+
+    public function getGameunitUnitTable()
+    {
+        if (!$this->gameunitUnitTable) {
+            $sm = $this->getServiceLocator();
+            $this->gameunitUnitTable = $sm->get('Gameunit\Model\GameunitUnitTable');
+        }
+
+        return $this->gameunitUnitTable;
     }
 }
