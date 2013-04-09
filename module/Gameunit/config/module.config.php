@@ -10,21 +10,64 @@
 return array(
     'controllers' => array(
         'invokables' => array(
+            'gameunit\index' => 'Gameunit\Controller\IndexController',
             'gameunit\unit' => 'Gameunit\Controller\UnitController',
+            'gameunit\building' => 'Gameunit\Controller\BuildingController',
+            'gameunit\resource' => 'Gameunit\Controller\ResourceController',
         ),
     ),
     'router' => array(
         'routes' => array(
-            'unit' => array(
-                'type' => 'segment',
+            'units' => array(
+                'type' => 'Literal',
+                'priority' => 1000,
                 'options' => array(
-                    'route' => '/unit[/:action]',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                    ),
+                    'route' => '/units',
                     'defaults' => array(
-                        'controller' => 'gameunit\unit',
-                        'action'     => 'index',
+                        'controller' => 'gameunit\index',
+                        'action' => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'unit' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/unit[/:action]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'gameunit\unit',
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+                    'buildings' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/building[/:action]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'gameunit\building',
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+                    'resources' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/resource[/:action]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'gameunit\resource',
+                                'action' => 'index',
+                            ),
+                        ),
                     ),
                 ),
             ),

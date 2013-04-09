@@ -12,12 +12,21 @@ namespace Gameunit\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class UnitController extends AbstractActionController
+class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+//        $child = new ViewModel();
+//        $child->setTemplate('gameunit/unit/index');
+
+        $units = $this->forward()->dispatch('gameunit/unit',array('action' => 'index'));
+        $buildings = $this->forward()->dispatch('gameunit/building',array('action' => 'index'));
+        $resources = $this->forward()->dispatch('gameunit/resource',array('action' => 'index'));
+
         $vm = new ViewModel();
-        $vm->setVariable('name','Joe');
+        $vm->addChild($units,'units');
+        $vm->addChild($buildings,'buildings');
+        $vm->addChild($resources,'resources');
         return $vm;
     }
 

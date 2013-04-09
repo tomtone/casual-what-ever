@@ -12,13 +12,11 @@ namespace Gameunit\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class UnitController extends AbstractActionController
+class ResourceController extends AbstractActionController
 {
     public function indexAction()
     {
-        $vm = new ViewModel();
-        $vm->setVariable('name','Joe');
-        return $vm;
+        return new ViewModel();
     }
 
     public function showAction()
