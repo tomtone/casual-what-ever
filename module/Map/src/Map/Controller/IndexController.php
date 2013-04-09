@@ -16,6 +16,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        echo 'hallo';
+        return $this->response;
+
     }
 }

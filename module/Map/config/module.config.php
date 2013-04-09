@@ -8,5 +8,23 @@
  */
 
 return array(
-
+    'router' => array(
+        'routes' => array(
+            'map' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/map',
+                    'defaults' => array(
+                        'controller' => 'Map\Controller\Index',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+        ),
+    ),
+    'controllers' => array(
+        'invokables' => array(
+            'Map\Controller\Index' => 'Map\Controller\IndexController'
+        ),
+    ),
 );
