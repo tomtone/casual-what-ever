@@ -1,0 +1,32 @@
+<?php
+/**
+ * @author Marco Bunge
+ * @copyright 2012 Marco Bunge <efika@rubymatrix.de>
+ */
+
+?>
+<div class="hero-unit">
+    <h1><?=$info->offsetGet('name')?></h1>
+    <h2>Units</h2>
+    <a href="<?=$this->url('units')?>">Back</a>
+</div>
+<div class="row">
+    <div class="span3">
+        <span>Overview</span>
+        <?php echo $this->linkList ?>
+    </div>
+    <div class="span9">
+        <table>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            <?php foreach($info as $key => $value) : ?>
+                <tr>
+                    <td><?=$key?></td>
+                    <td><?=$value?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</div>

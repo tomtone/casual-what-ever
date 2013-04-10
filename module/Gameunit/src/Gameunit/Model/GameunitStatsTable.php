@@ -24,13 +24,13 @@ class GameunitStatsTable {
         return $resultSet;
     }
 
-    public function getAlbum($id)
+    public function getStatsByUnitId($unit_id)
     {
-        $id  = (int) $id;
-        $rowset = $this->tableGateway->select(array('id' => $id));
+        $unit_id  = (int) $unit_id;
+        $rowset = $this->tableGateway->select(array('unit_id' => $unit_id));
         $row = $rowset->current();
         if (!$row) {
-            throw new \Exception("Could not find row $id");
+            throw new \Exception(sprintf("Could not find row (unit_id) %d",$unit_id));
         }
         return $row;
     }

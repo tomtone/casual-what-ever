@@ -7,16 +7,8 @@
 namespace Gameunit\Model;
 
 
-class GameunitUnit {
-    public $id;
-    public $parentId;
-    public $name;
-    public $description;
+use Zend\Stdlib\ArrayObject;
 
-    public function exchangeArray($data){
-        $this->id     = (isset($data['id'])) ? $data['id'] : null;
-        $this->parentId = (isset($data['parentId'])) ? $data['parentId'] : null;
-        $this->name  = (isset($data['name'])) ? $data['name'] : null;
-        $this->description  = (isset($data['description'])) ? $data['description'] : null;
-    }
+class GameunitUnit extends ArrayObject{
+
 }

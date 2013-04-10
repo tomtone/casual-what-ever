@@ -9,20 +9,31 @@
 
 namespace Gameunit\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Gameunit\Model\GameunitUnitTable;
 use Zend\View\Model\ViewModel;
 
-class UnitController extends AbstractActionController
+class UnitController extends AbstractGameunitActionController
 {
+
+    protected $type = GameunitUnitTable::TYPE_UNIT;
+
     public function indexAction()
     {
         $vm = new ViewModel();
-        $vm->setVariable('name','Joe');
+        $vm->addChild($this->getUnitListView(),'linkList');
         return $vm;
     }
 
-    public function showAction()
+    public function detailAction()
     {
-        return new ViewModel();
+        $id = $this->params()->fromRoute('id',1);
+        $this->getGameunitRepository();
+        $items = $this->getGameunitRepository()->getUnitTable()->fetchById($id,$this->type);
+        $vm = new ViewModel(array(
+            'info' => $items,
+            'stats' => 'list of stats'
+        ));
+        $vm->addChild($this->getUnitListView(),'linkList');
+        return $vm;
     }
 }

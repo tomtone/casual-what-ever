@@ -1,0 +1,13 @@
+<?php
+/**
+ * @author Marco Bunge
+ * @copyright 2012 Marco Bunge <efika@rubymatrix.de>
+ */
+?>
+<ul class="nav nav-tabs nav-stacked">
+    <?php foreach ($this->list as $item) : ?>
+        <li>
+            <a href="<?=$this->url('units/unit/details', array('id' => $item->offsetGet('id'))) ?>"><?=$item->offsetGet('name') ?></a>
+        </li>
+    <?php endforeach; ?>
+</ul>

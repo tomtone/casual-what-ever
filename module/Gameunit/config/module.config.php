@@ -31,28 +31,54 @@ return array(
                 'may_terminate' => true,
                 'child_routes' => array(
                     'unit' => array(
-                        'type' => 'segment',
+                        'type' => 'Literal',
                         'options' => array(
-                            'route' => '/unit[/:action]',
-                            'constraints' => array(
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
+                            'route' => '/unit',
                             'defaults' => array(
                                 'controller' => 'gameunit\unit',
                                 'action' => 'index',
                             ),
                         ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'details' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                    'route' => '/details[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]*',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'gameunit\unit',
+                                        'action' => 'detail',
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                     'buildings' => array(
-                        'type' => 'segment',
+                        'type' => 'literal',
                         'options' => array(
-                            'route' => '/building[/:action]',
-                            'constraints' => array(
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
+                            'route' => '/building',
                             'defaults' => array(
                                 'controller' => 'gameunit\building',
                                 'action' => 'index',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            '' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                    'route' => '/details[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]*',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'gameunit\building',
+                                        'action' => 'detail',
+                                    ),
+                                ),
                             ),
                         ),
                     ),

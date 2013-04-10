@@ -9,6 +9,7 @@
 
 namespace Gameunit;
 
+use Gameunit\Model\GameunitRepository;
 use Gameunit\Model\GameunitUnit;
 use Gameunit\Model\GameunitUnitTable;
 use Zend\Db\ResultSet\ResultSet;
@@ -28,6 +29,10 @@ class Module
         'gameunit_unit' => [
             'table' => 'Gameunit\Model\GameunitUnitTable',
             'storage' => 'Gameunit\Model\GameunitUnit',
+        ],
+        'gameunit_stats' => [
+            'table' => 'Gameunit\Model\GameunitStatsTable',
+            'storage' => 'Gameunit\Model\GameunitStats',
         ],
     ];
 
@@ -93,19 +98,19 @@ class Module
         return array(
             'factories' => array(
                 'Gameunit\Model\GameunitUnitTable' =>  function (ServiceManager $sm) use ($module) {
-//                    $tableGateway = $sm->get('GameunitUnitTableGateway');
-//                    $table = new GameunitUnitTable($tableGateway);
-//                    return $table;
                     return $module->setupTable('gameunit_unit',$sm);
                 },
 
-//                'GameunitUnitTableGateway' => function (ServiceManager $sm) use ($module) {
-//                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-//                    $resultSetPrototype = new ResultSet();
-//                    $resultSetPrototype->setArrayObjectPrototype(new GameunitUnit());
-//                    return new TableGateway('gameunit_unit', $dbAdapter, null, $resultSetPrototype);
-//                    return $module->setupTable('GameunitUnitTableGateway',$sm);
-//                },
+                'Gameunit\Model\GameunitStatsTable' =>  function (ServiceManager $sm) use ($module) {
+                    return $module->setupTable('gameunit_stats',$sm);
+                },
+
+                'Gameunit\Model\GameunitRepository' =>  function (ServiceManager $sm) use ($module) {
+                    $repository = new GameunitRepository();
+                    $repository->setStatsTable($sm->get('Gameunit\Model\GameunitStatsTable'));
+                    $repository->setUnitTable($sm->get('Gameunit\Model\GameunitUnitTable'));
+                    return $repository;
+                },
             ),
         );
     }
