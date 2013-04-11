@@ -7,7 +7,7 @@
 <ul class="nav nav-tabs nav-stacked">
     <?php foreach ($this->list as $item) : ?>
         <li>
-            <a href="<?=$this->url('units/unit/details', array('id' => $item->offsetGet('id'))) ?>"><?=$item->offsetGet('name') ?></a>
+            <a href="<?php echo $this->url('units/' . $this->controllerName . '/details', array('id' => $item->offsetGet('id'))) ?>"><?php echo $item->offsetGet('name') ?></a>
         </li>
     <?php endforeach; ?>
 </ul>

@@ -41,16 +41,18 @@ abstract class AbstractGameunitActionController extends AbstractActionController
     }
 
     /**
+     * @param string $controllerName
      * @return ViewModel
      */
-    public function getUnitListView(){
+    public function getUnitListView($controllerName){
         $this->getGameunitRepository();
 
         $items = $this->getGameunitRepository()->getUnitTable()->fetchByTypeId($this->type);
 
         $linkList = new ViewModel(
             array(
-                'list' => $items
+                'list' => $items,
+                'controllerName' => $controllerName
             )
         );
         $linkList->setTemplate('gameunit/shared/unit-link-list');

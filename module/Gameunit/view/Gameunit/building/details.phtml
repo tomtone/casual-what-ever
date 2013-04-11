@@ -5,6 +5,7 @@
  */
 
 ?>
+
 <div class="hero-unit">
     <h1><?=$info->offsetGet('name')?></h1>
     <h2>Units</h2>
@@ -23,8 +24,8 @@
             </tr>
             <?php foreach($info as $key => $value) : ?>
                 <tr>
-                    <td><?=$key?></td>
-                    <td><?=$value?></td>
+                    <td><?php echo $key?></td>
+                    <td><?php echo $value?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

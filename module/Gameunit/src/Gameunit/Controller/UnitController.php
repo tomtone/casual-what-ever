@@ -20,11 +20,11 @@ class UnitController extends AbstractGameunitActionController
     public function indexAction()
     {
         $vm = new ViewModel();
-        $vm->addChild($this->getUnitListView(),'linkList');
+        $vm->addChild($this->getUnitListView('unit'),'linkList');
         return $vm;
     }
 
-    public function detailAction()
+    public function detailsAction()
     {
         $id = $this->params()->fromRoute('id',1);
         $this->getGameunitRepository();
@@ -33,7 +33,7 @@ class UnitController extends AbstractGameunitActionController
             'info' => $items,
             'stats' => 'list of stats'
         ));
-        $vm->addChild($this->getUnitListView(),'linkList');
+        $vm->addChild($this->getUnitListView('unit'),'linkList');
         return $vm;
     }
 }

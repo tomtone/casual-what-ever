@@ -14,18 +14,25 @@ use Zend\View\Model\ViewModel;
 
 class BuildingController extends AbstractGameunitActionController
 {
-
     protected $type = GameunitUnitTable::TYPE_BUILDING;
 
     public function indexAction()
     {
         $vm = new ViewModel();
-        $vm->addChild($this->getUnitListView(),'linkList');
+        $vm->addChild($this->getUnitListView('building'),'linkList');
         return $vm;
     }
 
-    public function detailAction()
+    public function detailsAction()
     {
-        return new ViewModel();
+        $id = $this->params()->fromRoute('id',2);
+        $this->getGameunitRepository();
+        $items = $this->getGameunitRepository()->getUnitTable()->fetchById($id,$this->type);
+        $vm = new ViewModel(array(
+            'info' => $items,
+            'stats' => 'list of stats'
+        ));
+        $vm->addChild($this->getUnitListView('building'),'linkList');
+        return $vm;
     }
 }

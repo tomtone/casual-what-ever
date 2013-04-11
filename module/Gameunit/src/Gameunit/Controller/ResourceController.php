@@ -16,11 +16,31 @@ class ResourceController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        echo '<table>';
+        foreach($this->getModuleManager()->getLoadedModules() as $name => $module){
+            echo '<tr>';
+            echo '<th>';
+            echo $name;
+            echo '</th>';
+            echo '<td>';
+            var_dump(get_class_methods($module));
+            echo '</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        return $this->getResponse();
     }
 
     public function showAction()
     {
         return new ViewModel();
+    }
+
+
+    /**
+     * @return \Zend\ModuleManager\ModuleManager
+     */
+    public function getModuleManager(){
+       return $this->getServiceLocator()->get('Zend\ModuleManager\ModuleManager');
     }
 }

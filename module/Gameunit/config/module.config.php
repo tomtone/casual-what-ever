@@ -50,13 +50,13 @@ return array(
                                     ),
                                     'defaults' => array(
                                         'controller' => 'gameunit\unit',
-                                        'action' => 'detail',
+                                        'action' => 'details',
                                     ),
                                 ),
                             ),
                         ),
                     ),
-                    'buildings' => array(
+                    'building' => array(
                         'type' => 'literal',
                         'options' => array(
                             'route' => '/building',
@@ -67,7 +67,7 @@ return array(
                         ),
                         'may_terminate' => true,
                         'child_routes' => array(
-                            '' => array(
+                            'details' => array(
                                 'type' => 'segment',
                                 'options' => array(
                                     'route' => '/details[/:id]',
@@ -76,7 +76,7 @@ return array(
                                     ),
                                     'defaults' => array(
                                         'controller' => 'gameunit\building',
-                                        'action' => 'detail',
+                                        'action' => 'details',
                                     ),
                                 ),
                             ),
