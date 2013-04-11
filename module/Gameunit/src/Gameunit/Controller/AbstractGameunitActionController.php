@@ -59,4 +59,14 @@ abstract class AbstractGameunitActionController extends AbstractActionController
         return $linkList;
     }
 
+    protected function getStats($unitId){
+        $repository = $this->getGameunitRepository();
+        $units = $repository->getStatsTable()->fetchByUnitId($unitId);
+        foreach($units as $unit){
+            $statIdCollection[] = $unit->offsetGet('stat_type_id');
+        }
+        $stats = $repository->getStatTypesTable()->fetchByIdCollection($statIdCollection);
+        return $stats;
+    }
+
 }

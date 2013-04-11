@@ -16,6 +16,11 @@ class ResourceController extends AbstractActionController
 {
     public function indexAction()
     {
+        return new ViewModel();
+    }
+
+    public function showAction()
+    {
         echo '<table>';
         foreach($this->getModuleManager()->getLoadedModules() as $name => $module){
             echo '<tr>';
@@ -29,11 +34,6 @@ class ResourceController extends AbstractActionController
         }
         echo '</table>';
         return $this->getResponse();
-    }
-
-    public function showAction()
-    {
-        return new ViewModel();
     }
 
 

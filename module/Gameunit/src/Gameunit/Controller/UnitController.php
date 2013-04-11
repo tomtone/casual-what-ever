@@ -27,11 +27,12 @@ class UnitController extends AbstractGameunitActionController
     public function detailsAction()
     {
         $id = $this->params()->fromRoute('id',1);
-        $this->getGameunitRepository();
-        $items = $this->getGameunitRepository()->getUnitTable()->fetchById($id,$this->type);
+        $repository = $this->getGameunitRepository();
+        $info = $repository->getUnitTable()->fetchById($id,$this->type);
+        $stats = $this->getStats($id);
         $vm = new ViewModel(array(
-            'info' => $items,
-            'stats' => 'list of stats'
+            'info' => $info,
+            'stats' => $stats
         ));
         $vm->addChild($this->getUnitListView('unit'),'linkList');
         return $vm;

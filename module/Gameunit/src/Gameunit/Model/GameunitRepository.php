@@ -22,6 +22,11 @@ class GameunitRepository {
     protected $statsTable;
 
     /**
+     * @var GameunitStatTypesTable
+     */
+    protected $statTypesTable;
+
+    /**
      * @return GameunitUnitTable
      */
     public function getUnitTable()
@@ -51,5 +56,21 @@ class GameunitRepository {
     public function setStatsTable(GameunitStatsTable $statsTable)
     {
         $this->statsTable = $statsTable;
+    }
+
+    /**
+     * @return GameunitStatTypesTable
+     */
+    public function getStatTypesTable()
+    {
+        return $this->statTypesTable;
+    }
+
+    /**
+     * @param GameunitStatTypesTable $statTypesTable
+     */
+    public function setStatTypesTable(GameunitStatTypesTable $statTypesTable)
+    {
+        $this->statTypesTable = $statTypesTable;
     }
 }

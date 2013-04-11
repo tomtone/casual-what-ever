@@ -16,15 +16,22 @@
         <?php echo $this->linkList ?>
     </div>
     <div class="span9">
-        <table>
-            <tr>
-                <th>Key</th>
-                <th>Value</th>
-            </tr>
+        <h4>Info</h4>
+        <table class="table table-striped table-bordered">
             <?php foreach($info as $key => $value) : ?>
                 <tr>
-                    <td><?php echo $key?></td>
+                    <th><?php echo $key?></th>
                     <td><?php echo $value?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+        <h4>Stats</h4>
+        <table class="table table-striped table-bordered">
+            <?php foreach($stats as $stat) : ?>
+                <tr>
+                    <th><?php echo $stat->offsetGet('name')?></th>
+                    <td><?php echo $stat->offsetGet('value')?></td>
+                    <td><?php echo $stat->offsetGet('type')?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

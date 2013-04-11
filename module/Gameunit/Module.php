@@ -34,6 +34,10 @@ class Module
             'table' => 'Gameunit\Model\GameunitStatsTable',
             'storage' => 'Gameunit\Model\GameunitStats',
         ],
+        'gameunit_stat_types' => [
+            'table' => 'Gameunit\Model\GameunitStatTypesTable',
+            'storage' => 'Gameunit\Model\GameunitStatTypes',
+        ],
     ];
 
     protected $tableInstances;
@@ -105,10 +109,15 @@ class Module
                     return $module->setupTable('gameunit_stats',$sm);
                 },
 
+                'Gameunit\Model\GameunitStatTypesTable' =>  function (ServiceManager $sm) use ($module) {
+                    return $module->setupTable('gameunit_stat_types',$sm);
+                },
+
                 'Gameunit\Model\GameunitRepository' =>  function (ServiceManager $sm) use ($module) {
                     $repository = new GameunitRepository();
                     $repository->setStatsTable($sm->get('Gameunit\Model\GameunitStatsTable'));
                     $repository->setUnitTable($sm->get('Gameunit\Model\GameunitUnitTable'));
+                    $repository->setStatTypesTable($sm->get('Gameunit\Model\GameunitStatTypesTable'));
                     return $repository;
                 },
             ),
